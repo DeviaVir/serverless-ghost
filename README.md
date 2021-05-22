@@ -21,8 +21,8 @@
 > They _may_ work.
 
 - [ ] Webhooks
-- [ ] Newsletters 
-- [ ] Update new versions of Ghost (but it _should_ work) 
+- [ ] Newsletters
+- [ ] Update new versions of Ghost (but it _should_ work)
 
 ## Additional features
 `serverless-ghost` provides a few facilities:
@@ -45,12 +45,12 @@ The following are made possible/easier with `serverless-ghost`:
 
 # Deployment instructions
 
-## TLDR
-- Click Launch stack: <a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?templateURL=https://s3.amazonaws.com/jeshan-oss-public-files/serverless-ghost/0.1/template.yaml&stackName=serverless-ghost" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"></a> 
+## TL;DR
+- Click Launch stack: <a href="https://console.aws.amazon.com/cloudformation/home?region=eu-west-3#/stacks/create/review?templateURL=https://digilyfe-oss-public-files.s3.amazonaws.com/serverless-ghost/3.42.4/template.yaml&stackName=serverless-ghost" target="_blank"><img src="https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png"></a>
 - Declare your desired `DomainName` stack parameter.
 - Check output for how to validate your SSL certificate.
 - Put the stack output `WebsiteDns` as CNAME in your dns settings
-- Hit the `PingUrl` given in the stack output
+- Hit the `PingUrl` given in the stack output (wait 1 minute and..)
 - Access the blog at `https://${DomainName}`
 
 This is what will get deployed:

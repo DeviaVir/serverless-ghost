@@ -1,4 +1,4 @@
-FROM ghost:3.20.1 as base
+FROM ghost:3.42.4 as base
 
 WORKDIR current/
 RUN npm install
@@ -19,7 +19,7 @@ WORKDIR /app
 
 RUN pip3 install "aws-sam-cli<1" awscli
 
-COPY --from=base /var/lib/ghost/versions/3.20.1/ src
+COPY --from=base /var/lib/ghost/versions/3.42.4/ src
 
 RUN mkdir nodejs && mv src/node_modules nodejs/node_modules
 
@@ -27,7 +27,6 @@ RUN mkdir nodejs && mv src/node_modules nodejs/node_modules
 RUN rm -rf nodejs/node_modules/gscan/test/fixtures/ \
   nodejs/node_modules/sharp/vendor/lib/ \
   nodejs/node_modules/gscan/app/uploads && \
-
   find . -type f -name '*.map' -delete && \
   find . -type f -name '*.min.js' -delete && \
   find | grep test/ | xargs rm -rf && \
