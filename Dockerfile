@@ -1,4 +1,4 @@
-FROM ghost:3.42.4 as base
+FROM ghost:3.42.5 as base
 
 WORKDIR current/
 RUN npm install
@@ -19,7 +19,7 @@ WORKDIR /app
 
 RUN pip3 install "aws-sam-cli<1" awscli
 
-COPY --from=base /var/lib/ghost/versions/3.42.4/ src
+COPY --from=base /var/lib/ghost/versions/3.42.5/ src
 
 RUN mkdir nodejs && mv src/node_modules nodejs/node_modules
 
