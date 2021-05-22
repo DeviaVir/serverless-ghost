@@ -26,11 +26,16 @@ RUN mkdir nodejs && mv src/node_modules nodejs/node_modules
 # remove some unneeded files that make the package size exceed lambda limit
 RUN rm -rf nodejs/node_modules/gscan/test/fixtures/ \
   nodejs/node_modules/sharp/vendor/lib/ \
-  nodejs/node_modules/gscan/app/uploads && \
+  nodejs/node_modules/gscan/app/uploads \
+  nodejs/node_modules/.yarn-integrity && \
   find . -type f -name '*.map' -delete && \
   find . -type f -name '*.min.js' -delete && \
   find | grep test/ | xargs rm -rf && \
-  find | grep tests/ | xargs rm -rf
+  find | grep tests/ | xargs rm -rf && \
+  find | grep eslint | xargs rm -rf && \
+  find | grep "\.coffee" | xargs rm -rf && \
+  find | grep "\.stub" | xargs rm -rf && \
+  find nodejs/node_modules/intl/locale-data/jsonp/ -type f ! -name 'en*' ! -name 'nl*' -delete
 
 RUN mkdir node-modules && mv nodejs node-modules/
 RUN cd node-modules && zip -qr ../node-modules.zip *
